@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const UserSchema = new Schema({
+const LocationSchema = new Schema({
   placename: {
     type: String,
     required: true,
@@ -19,6 +19,6 @@ const UserSchema = new Schema({
   },
 });
 
-const Location = model("Location", UserSchema, "locations");
+const Location = model("Location", LocationSchema, "locations");
 
 module.exports = Location;
