@@ -31,6 +31,12 @@ const LocationSchema = new Schema({
     type: String,
     required: true,
   },
+  images: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   userid: {
     type: Schema.Types.ObjectId,
     ref: "User",
