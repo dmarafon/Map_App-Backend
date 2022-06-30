@@ -11,6 +11,8 @@ const corsOptions = {
     "http://localhost:4000",
     "http://localhost:4001",
     "http://localhost:4002",
+    "https://trippyvoyage.netlify.app/",
+    "https://trippyvoyage.netlify.app",
   ],
 };
 
