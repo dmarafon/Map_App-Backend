@@ -18,18 +18,11 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  address: {
-    type: String,
-    required: true,
-  },
-  apartmentdoorstair: {
-    type: String,
-  },
   city: {
     type: String,
     required: true,
   },
-  phonenumber: {
+  country: {
     type: String,
     required: true,
   },
