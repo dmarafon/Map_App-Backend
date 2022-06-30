@@ -5,6 +5,6 @@ const auth = require("../middlewares/auth");
 
 const locationsRouter = express.Router();
 
-locationsRouter.get("/locations", auth, getUserLocations);
+locationsRouter.get("/marks", auth, getUserLocations);
 
 module.exports = locationsRouter;

@@ -17,6 +17,8 @@ const loginUser = async (req, res, next) => {
     const userData = {
       firstName: user.firstname,
       email: user.email,
+      city: user.city,
+      country: user.country,
       id: user.id,
     };
     const rightPassword = await bcrypt.compare(password, user.password);

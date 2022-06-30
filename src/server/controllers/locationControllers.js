@@ -6,16 +6,16 @@ const getUserLocations = async (req, res, next) => {
   const { userId } = req;
 
   try {
-    const { userid } = await User.findById(userId).populate({
-      path: "userid",
+    const { marks } = await User.findById(userId).populate({
+      path: "marks",
       model: Location,
     });
 
     const count = await User.countDocuments();
 
     res.status(200).json({
-      userid,
-      totalLocations: Math.ceil(count),
+      marks,
+      totalLocations: Math.ceil(count + 1),
     });
   } catch {
     const error = customError(
