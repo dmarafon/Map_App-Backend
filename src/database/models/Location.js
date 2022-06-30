@@ -37,6 +37,12 @@ const LocationSchema = new Schema({
       required: true,
     },
   ],
+  backupimages: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   userid: {
     type: Schema.Types.ObjectId,
     ref: "User",
