@@ -27,7 +27,7 @@ const LocationSchema = new Schema({
       },
     ],
   },
-  collection: {
+  filter: {
     type: String,
     required: true,
   },
