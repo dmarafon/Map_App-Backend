@@ -29,11 +29,12 @@ const credentialsRegisterSchema = {
       .email({ tlds: { allow: false } })
       .min(4)
       .max(254)
-      .messages({ message: "An email is Required" })
+      .messages({ message: "A valid email is Required" })
       .required(),
     password: Joi.string()
+      .min(5)
       .max(15)
-      .messages({ message: "A Password is Required" })
+      .messages({ message: "A valid Password is Required" })
       .required(),
     city: Joi.string()
       .max(35)
