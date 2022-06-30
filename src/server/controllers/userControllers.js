@@ -38,4 +38,37 @@ const loginUser = async (req, res, next) => {
   }
 };
 
-module.exports = { loginUser };
+const registerUser = async (req, res, next) => {
+  try {
+    const { firstname, surname, email, password, city, country } = req.body;
+
+    const user = await User.findOne({ email });
+    if (user) {
+      const error = customError(
+        409,
+
+        "User already present in the database",
+        "Conflict"
+      );
+      next(error);
+      return;
+    }
+
+    const encryptedPassword = await bcrypt.hash(password, 10);
+    const newUser = {
+      firstname,
+      surname,
+      email,
+      password: encryptedPassword,
+      city,
+      country,
+    };
+    await User.create(newUser);
+    res.status(201).json({ new_user: { email: newUser.email } });
+  } catch {
+    const error = customError(400, "Wrong user data", "Bad Request");
+    next(error);
+  }
+};
+
+module.exports = { loginUser, registerUser };

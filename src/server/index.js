@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const { notFoundError, generalError } = require("./middlewares/errors");
-const usersRouter = require("../routers/usersRouter");
+const usersRouter = require("./routers/usersRouter");
 
 const corsOptions = {
   origin: [
