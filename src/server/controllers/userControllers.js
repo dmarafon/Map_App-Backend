@@ -9,9 +9,11 @@ const loginUser = async (req, res, next) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    const error = new Error("Incorrect email");
-    error.statusCode = 403;
-    error.customMessage = "Email or password is wrong";
+    const error = customError(
+      403,
+      "Incorrect Email",
+      "Email or Password Wrong"
+    );
     next(error);
   } else {
     const userData = {
