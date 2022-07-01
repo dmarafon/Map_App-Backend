@@ -27,11 +27,17 @@ const LocationSchema = new Schema({
       },
     ],
   },
-  collection: {
+  filter: {
     type: String,
     required: true,
   },
   images: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+  backupimages: [
     {
       type: String,
       required: true,
