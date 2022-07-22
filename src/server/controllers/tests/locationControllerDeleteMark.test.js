@@ -40,13 +40,31 @@ describe("Given a deleteLocations controller", () => {
     });
   });
 
-  describe("When invoked with and an error occurs", () => {
+  describe("When invoked with and an error occurs while updating the deleted location", () => {
     test("Then it should call the next received function with the error message 'Location Not Found'", async () => {
       const expectedErrorMessage = "Location Not Found";
 
       const expectedError = new Error(expectedErrorMessage);
 
       Location.findByIdAndDelete = jest.fn().mockResolvedValue(false);
+
+      await deleteLocations(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(expectedError);
+    });
+  });
+
+  describe("When invoked with and an error occurs trying to find the user owner of the location", () => {
+    test("Then it should call the next received function with the error message 'Location Not Found'", async () => {
+      const expectedErrorMessage = "Location Not Found";
+
+      const expectedError = new Error(expectedErrorMessage);
+
+      Location.findByIdAndDelete = jest
+        .fn()
+        .mockResolvedValue(mockLocations[0]);
+
+      User.findByIdAndUpdate = jest.fn().mockResolvedValue(false);
 
       await deleteLocations(req, res, next);
 
