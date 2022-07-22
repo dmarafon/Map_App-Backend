@@ -27,4 +27,27 @@ const getUserLocations = async (req, res, next) => {
   }
 };
 
-module.exports = { getUserLocations };
+const deleteLocations = async (req, res, next) => {
+  const { userId } = req;
+  const { locationId } = req.params;
+
+  const location = await Location.findByIdAndDelete(locationId);
+  if (location) {
+    const updatedCollection = await User.findByIdAndUpdate(
+      userId,
+      {
+        $pull: { marks: locationId },
+      },
+      { new: true }
+    );
+
+    if (updatedCollection) {
+      res.status(200).json({ deleted_location: location });
+    }
+  } else {
+    const error = customError(404, "Bad request", "Location Not Found");
+    next(error);
+  }
+};
+
+module.exports = { getUserLocations, deleteLocations };
