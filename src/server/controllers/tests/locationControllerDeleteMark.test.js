@@ -9,9 +9,9 @@ describe("Given a deleteLocations controller", () => {
   const expectedStatus = 200;
 
   const req = {
-    body: { userId: 3 },
+    body: { userId: "1" },
     params: {
-      artworkId: 3,
+      locationId: "10",
     },
   };
   const res = {
@@ -19,7 +19,7 @@ describe("Given a deleteLocations controller", () => {
     json: jest.fn(),
   };
 
-  describe("When invoked with a given artwork id corresponding to an existing art in the database in the body of the request", () => {
+  describe("When invoked with a given a location id corresponding to an existing location in the database in the body of the request", () => {
     Location.findByIdAndDelete = jest.fn().mockResolvedValue(mockLocations[0]);
     User.findByIdAndUpdate = jest.fn().mockResolvedValue(true);
 
@@ -29,7 +29,7 @@ describe("Given a deleteLocations controller", () => {
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
     });
 
-    test("Then it should call the response's json method with the deleted record", async () => {
+    test("Then it should call the response's json method with the deleted location", async () => {
       const expectedJsonResponse = {
         deleted_location: mockLocations[0],
       };
@@ -41,8 +41,8 @@ describe("Given a deleteLocations controller", () => {
   });
 
   describe("When invoked with and an error occurs", () => {
-    test("Then it should call the next received function with ", async () => {
-      const expectedErrorMessage = "Location id not found";
+    test("Then it should call the next received function with the error message 'Location Not Found'", async () => {
+      const expectedErrorMessage = "Location Not Found";
 
       const expectedError = new Error(expectedErrorMessage);
 
@@ -50,7 +50,7 @@ describe("Given a deleteLocations controller", () => {
 
       await deleteLocations(req, res, next);
 
-      expect(next).not.toHaveBeenCalledWith(expectedError);
+      expect(next).toHaveBeenCalledWith(expectedError);
     });
   });
 });

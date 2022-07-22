@@ -1,6 +1,6 @@
 const mockLocations = [
   {
-    id: "62be16da579b7e62a1072fd9",
+    id: "1",
     type: "Feature",
     properties: {
       name: "MACBA",
@@ -18,11 +18,11 @@ const mockLocations = [
       "https://www.metropoliabierta.com/uploads/s1/32/72/06/1280px-macba-bcn_9_1200x480.jpeg",
       "https://cdn02.visitbarcelona.com/files/5531-4966-imagenCAT/macba_barcelona_c1.jpg",
     ],
-    userid: "62bdceb455c653bf9206dbc4",
+    userid: "10",
     filter: "Skate Places",
   },
   {
-    id: "62d9f612284a1b74547f4852",
+    id: "2",
     type: "Feature",
     properties: {
       name: "Plaça de Sants",
@@ -40,6 +40,7 @@ const mockLocations = [
       "https://www.metropoliabierta.com/uploads/s1/32/72/06/1280px-macba-bcn_9_1200x480.jpeg",
       "https://cdn02.visitbarcelona.com/files/5531-4966-imagenCAT/macba_barcelona_c1.jpg",
     ],
+    userid: "20",
 
     filter: "Skate Places",
   },
